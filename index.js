@@ -6,11 +6,12 @@ const port = 3000; // port utilisé pour faire tourner le serveur
 
 app.use(express.json()); // permet de lire les 'body' dans les requêtes
 
-mongoose.connect("mongodb://localhost:27017/olympia"); // connexion/création de la BDD
+mongoose.connect("mongodb://localhost:27017/doctolib"); // connexion/création de la BDD
 
 // import des routes
-
+const bookingRouter = require("./routes/booking");
 // utilisation des routes
+app.use(bookingRouter);
 
 // gestion des mauvaises routes requêtées
 app.all("*", (req, res) => {
